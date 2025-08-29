@@ -26,12 +26,11 @@ print("\nDescriptive statistics:")
 print(df.describe())
 
 # Perform a simple analysis (mean of a specific column)
-# Replace 'column_name' with the actual column analyzed
 try:
-    mean_value = df['column_name'].mean()
-    print(f"\nThe mean of 'column_name' is: {mean_value}")
+    mean_value = df['Booking_Value'].mean()
+    print(f"\nThe mean of 'booking_value' is: {mean_value}")
 except KeyError:
-    print("\nError: 'column_name' not found in the DataFrame.")
+    print("\nError: 'booking_value' not found in the DataFrame.")
 
 # Save cleaned data to a new CSV file
 df.to_csv('cleaned_uber_data.csv', index=False)
