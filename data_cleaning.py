@@ -20,7 +20,7 @@ df.fillna(df.mean(numeric_only=True), inplace=True)
 # Remove duplicate rows
 df.drop_duplicates(inplace=True)
 
-# --- Data Analysis ---
+# --- Simple Data Analysis to Check Successful Cleaning ---
 # Generate descriptive statistics
 print("\nDescriptive statistics:")
 print(df.describe())
