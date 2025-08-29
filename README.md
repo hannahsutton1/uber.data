@@ -1,7 +1,8 @@
 # Uber Data Project
-[Click here for full data set information][def]
+📊 [Click here for data set information](https://www.kaggle.com/datasets/yashdevladdha/uber-ride-analytics-dashboard/data)
 
-### About the Dataset
+### About Dataset
+
 **Uber Ride Analytics Dataset 2024**
 
 This comprehensive dataset contains detailed ride-sharing data from Uber operations for the year 2024, providing rich insights into booking patterns, vehicle performance, revenue streams, cancellation behaviors, and customer satisfaction metrics.
@@ -17,9 +18,8 @@ The dataset captures 148,770 total bookings across multiple vehicle types and pr
 - Success Rate: 65.96% (93K completed rides)
 
 - Cancellation Rate: 25% (37.43K cancelled bookings)
-Customer 
 
-- Cancellations: 19.15% (27K rides)
+- Customer Cancellations: 19.15% (27K rides)
 
 - Driver Cancellations: 7.45% (10.5K rides)
 
@@ -97,5 +97,3 @@ UberXL |	1.53M	| 92.2%	| 25.72 km |	72K km |
 - Temporal Coverage: Full year 2024 data with daily granularity
 - Geographic Scope: Multiple pickup and drop locations
 - Balanced Distribution: Good representation across all vehicle types and time periods.
-
-[def]: https://public.tableau.com/views/StormDashboard_17559311714590/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
