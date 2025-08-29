@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 #Load the data set
 try: 
-    df = pd.read_csv('ncr_ride_bookings.csv')
+    df = pd.read_csv('original_uber_ride_bookings.csv')
     print("Data loaded successfully.")
 except FileNotFoundError:
-    print("Error: The file 'ncr_ride_bookings.csv' was not found.")
+    print("Error: The file 'original_uber_ride_bookings.csv' was not found.")
     exit ()
 # Data Cleaning 
 # Display first few rows and information about the data
@@ -36,3 +36,6 @@ except KeyError:
 df.to_csv('cleaned_uber_data.csv', index=False)
 print("\nCleaned data saved to 'cleaned_uber_data.csv'.")
 
+#renaming original file to avoid confusion
+import os
+os.rename('original_uber_ride_bookings.csv', 'original_uber_data.csv')
