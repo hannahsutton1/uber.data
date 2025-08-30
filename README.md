@@ -98,7 +98,7 @@ UberXL |	1.53M	| 92.2%	| 25.72 km |	72K km |
 - Geographic Scope: Multiple pickup and drop locations
 - Balanced Distribution: Good representation across all vehicle types and time periods.
 
-### Data Cleaning Process
+### 1. Data Cleaning Process
 For the Uber Ride Bookings dataset, I designed and implemented a reproducible data cleaning pipeline using Python’s pandas and NumPy libraries. The process ensured the dataset was reliable, consistent, and ready for analysis.
 
 **Data Loading & Validation**
@@ -128,3 +128,35 @@ For the Uber Ride Bookings dataset, I designed and implemented a reproducible da
 - Renamed the original dataset file to original_uber_data.csv to avoid confusion and maintain clear version control.
 
 ✨**Result**: A structured, fully cleaned dataset with missing values imputed, duplicates removed, and key metrics validated to ensure accurate, reliable insights for downstream analysis and reporting.
+
+### 2. **Correlation Analysis**
+- Calculated the **Pearson correlation** between `Driver_Ratings` and `Booking_Value`.  
+  - Result: `-0.0002` → essentially no linear relationship.  
+- Visualized via a **scatter plot**, confirming no clear pattern.  
+- Created a full correlation matrix for all numeric variables, finding no strong linear relationships.  
+✨**Result**: linear regression was not appropriate for this dataset.  
+
+### 3. **Logistic Regression Testing**
+- Reframed the problem: *Does driving a Sedan predict high-value rides?*  
+  - Defined `high_value` as booking values above the dataset average ($508.29).  
+  - Encoded `Vehicle_Type` as a binary variable (`is_sedan`).  
+- Built features: `X = [is_sedan, Booking_Value]` and target `y = high_value`.  
+- Split the data into training and test sets using **stratified sampling** to preserve class balance.  
+
+### 4. **Model Training & Evaluation**
+- Trained a **Logistic Regression** model using scikit-learn.  
+- Evaluated performance with:  
+  - **Confusion matrix**  
+  - **Classification report** (precision, recall, F1)  
+  - **ROC Curve** to visualize model discrimination ability.  
+- Extracted **coefficients** to interpret feature importance (e.g., whether Sedans increase odds of high-value rides).  
+
+### 5. **Findings**
+- Correlation analysis showed no strong linear relationships across numeric features.  
+- Logistic regression revealed whether `is_sedan` carried predictive power for high-value rides.  
+- Additional checks of class balance (`value_counts`, group means) ensured the insights were valid and not artifacts of imbalance.  
+
+---
+
+✨ This workflow demonstrates a full **EDA → feature engineering → modeling → interpretation pipeline** using **pandas, NumPy, Matplotlib, and scikit-learn**.  
+
