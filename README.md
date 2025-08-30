@@ -97,3 +97,34 @@ UberXL |	1.53M	| 92.2%	| 25.72 km |	72K km |
 - Temporal Coverage: Full year 2024 data with daily granularity
 - Geographic Scope: Multiple pickup and drop locations
 - Balanced Distribution: Good representation across all vehicle types and time periods.
+
+### Data Cleaning Process
+For the Uber Ride Bookings dataset, I designed and implemented a reproducible data cleaning pipeline using Python’s pandas and NumPy libraries. The process ensured the dataset was reliable, consistent, and ready for analysis.
+
+**Data Loading & Validation**
+
+- Imported the dataset (original_uber_ride_bookings.csv) with robust error handling to ensure smooth execution even if the file was missing or misnamed.
+
+- Conducted initial exploratory checks (head(), info()) to inspect data structure, column types, and missing values.
+
+**Handling Missing Values**
+
+- Replaced null entries in numeric columns with the mean of each column. This imputation method preserved the overall distribution and ensured key metrics like averages remained representative.
+
+**Duplicate Removal**
+
+- Removed duplicate rows to prevent skewed analyses and maintain dataset integrity.
+
+**Basic Statistical Validation**
+
+- Generated descriptive statistics (describe()) to confirm distributions and validate that cleaning steps had worked.
+
+- Performed a targeted check on the Booking_Value column by computing its mean as a sanity check of numerical accuracy.
+
+**Data Export & File Management**
+
+- Exported the cleaned dataset as cleaned_uber_data.csv for use in subsequent analysis and visualization tasks.
+
+- Renamed the original dataset file to original_uber_data.csv to avoid confusion and maintain clear version control.
+
+✨**Result**: A structured, fully cleaned dataset with missing values imputed, duplicates removed, and key metrics validated to ensure accurate, reliable insights for downstream analysis and reporting.
