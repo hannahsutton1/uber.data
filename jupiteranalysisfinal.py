@@ -74,6 +74,79 @@ corr
 # **Logistic testing and regression**
 
 # %%
+#Install sklearn for logistic regression
+%pip install scikit-learn
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, classification_report, RocCurveDisplay
+
+
+# %% [markdown]
+# Encode Categorical Features for Logistic Regression
+# 
+
+# %%
+#  Load dataset
+df = pd.read_csv("cleaned_uber_data.csv")
+
+# we want to predict whether drving a sedan leads to high booking value rides (> $508.29 (the avg))
+df['high_value'] = (df['Booking_Value'] > 508.29).astype(int)
+# Convert 'Vehicle_Type' to a binary variable: 1 if 'Sedan', else 0
+df['is_sedan'] = (df['Vehicle_Type'] == 'Sedan').astype(int)    
+
+X = df[['is_sedan', 'Booking_Value']]
+y = df['high_value']
+
+# %% [markdown]
+# Train/Test Split
+
+# %%
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+
+# %% [markdown]
+# Fit Logistic Regression
+
+# %%
+# Check class distribution in y_train
+print("y_train value counts:\n", y_train.value_counts())
+
+# If only one class is present, model fitting will fail.
+if y_train.nunique() < 2:
+	raise ValueError("y_train contains only one class. Please check your data split or threshold for 'high_value'.")
+else:
+	model = LogisticRegression(max_iter=1000)
+	model.fit(X_train, y_train)
+
+# %% [markdown]
+# Evaluate Performance
+
+# %%
+y_pred = model.predict(X_test)
+
+print("Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+
+# ROC Curve
+RocCurveDisplay.from_estimator(model, X_test, y_test)
+plt.show()
+
+# %% [markdown]
+# Print coefficients to see which values contribute to high/low rating
+
+# %%
+coeffs = pd.Series(model.coef_[0], index=X.columns)
+print(coeffs.sort_values())
+#!/usr/bin/env python3  
+
+# %% [markdown]
+# Check class balance and cross-validate
+
+# %%
+df['is_sedan'].value_counts()
+df.groupby('is_sedan')['high_value'].mean()
 
 
 
