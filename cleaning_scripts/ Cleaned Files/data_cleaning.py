@@ -1,7 +1,18 @@
+#Import libraries
 #Import pandas and numpy libraries
 import pandas as pd
 import numpy as np
+import os
+
 #Load the data set
+print(os.getcwd())
+#change working directory
+os.chdir('/workspaces/uber.data/csv_files')
+#print current working directory
+print(os.getcwd())
+
+# Load the dataset (assuming it's in the same directory as this script)
+
 try: 
     df = pd.read_csv('original_uber_data.csv')
     print("Data loaded successfully.")
@@ -25,7 +36,7 @@ df.drop_duplicates(inplace=True)
 print("\nDescriptive statistics:")
 print(df.describe())
 
-# Perform a simple analysis (mean of a specific column)
+# Perform a simple analysis to ensure accuracy and cleaning methods are enabled (mean of a specific column)
 try:
     mean_value = df['Booking_Value'].mean()
     print(f"\nThe mean of 'booking_value' is: {mean_value}")
